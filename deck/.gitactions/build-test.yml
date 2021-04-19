@@ -1,4 +1,4 @@
-name: Java CI
+name: Deck Application CI
 
 on: [push]
 
@@ -13,6 +13,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Build Deck Project
-        run: ./gradlew build
+      - name: Build Project
         working-directory: ./deck
+        run: ./gradlew build
