@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: deck
-        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_deck:latest
+        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_deck:a17051cfcdc605a40fc0e5c1c6afdf3f383c751a
         ports:
         - containerPort: 8080
 ---
@@ -34,6 +34,6 @@ spec:
   selector:
     app: deck
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
