@@ -15,6 +15,6 @@ spring:
     hibernate.ddl-auto: update
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://qa-bootcamp-instance-1.ctmlucvewrji.us-east-1.rds.amazonaws.com:3306/qa-bootcamp
+    url: jdbc:mysql://qa-bootcamp-dev-cluster.cluster-ctmlucvewrji.us-east-1.rds.amazonaws.com:3306/qa-bootcamp
     username: admin
     password: admin-qa-password
