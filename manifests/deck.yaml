@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: deck
-        image: REGISTRY/IMAGE:TAG
+        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_deck:latest
         ports:
         - containerPort: 8080
 ---
