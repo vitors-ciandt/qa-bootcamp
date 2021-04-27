@@ -1,4 +1,4 @@
-MYSQL_HOST: qa-bootcamp-dev.cluster-ctmlucvewrji.us-east-1.rds.amazonaws.com
+MYSQL_HOST: qa-bootcamp.cluster-ctmlucvewrji.us-east-1.rds.amazonaws.com
 
 feign:
   client:
