@@ -1,5 +1,3 @@
-MYSQL_HOST: qa-bootcamp.cluster-ctmlucvewrji.us-east-1.rds.amazonaws.com
-
 feign:
   client:
     config:
@@ -17,6 +15,6 @@ spring:
     hibernate.ddl-auto: update
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/qa-bootcamp
+    url: jdbc:mysql://qa-bootcamp.cluster-ctmlucvewrji.us-east-1.rds.amazonaws.com:3306/qa-bootcamp
     username: admin
     password: admin-qa-password
