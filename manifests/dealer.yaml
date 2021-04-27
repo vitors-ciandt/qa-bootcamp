@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: deck
-        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_dealer:6bd18fdbd95ed6a1686713fd643e9ebd29c62f0a
+        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_dealer:4dfe88fdfd8dec46c7890502c9977e201b82bc26
         ports:
         - containerPort: 8080
 ---
