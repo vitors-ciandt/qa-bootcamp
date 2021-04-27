@@ -1,0 +1,15 @@
+MYSQL_HOST: localhost
+
+server.port: 8082
+dealerProxy:
+  url: http://localhost:8081
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate.ddl-auto: update
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:qa-bootcamp
+    username: sa
+    password: 

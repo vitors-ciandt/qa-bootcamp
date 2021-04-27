@@ -1,0 +1,22 @@
+MYSQL_HOST: qa-bootcamp-dev.cluster-ctmlucvewrji.us-east-1.rds.amazonaws.com
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+
+dealerProxy:
+  url: http://dealer:8080
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate.ddl-auto: update
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/qa-bootcamp
+    username: admin
+    password: admin-qa-password
