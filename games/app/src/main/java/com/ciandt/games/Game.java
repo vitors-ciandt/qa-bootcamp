@@ -10,7 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.ciandt.games.config.JpaConverterJson;
+import com.ciandt.games.config.PlayingCardJpaConverterJson;
+import com.ciandt.games.config.PlayingCardListJpaConverterJson;
 import com.ciandt.games.playingcard.PlayingCard;
 
 import lombok.AllArgsConstructor;
@@ -28,11 +29,11 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Instant timestamp;
-    @Convert(converter = JpaConverterJson.class)
+    @Convert(converter = PlayingCardJpaConverterJson.class)
     private PlayingCard card1;
-    @Convert(converter = JpaConverterJson.class)
+    @Convert(converter = PlayingCardJpaConverterJson.class)
     private PlayingCard card2;
     @Column(columnDefinition = "text")
-    @Convert(converter = JpaConverterJson.class)
+    @Convert(converter = PlayingCardListJpaConverterJson.class)
     private List<PlayingCard> playedDeck;
 }

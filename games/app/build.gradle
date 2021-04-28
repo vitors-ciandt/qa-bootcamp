@@ -57,10 +57,3 @@ tasks.named('test') {
     // Use junit platform for unit tests.
     useJUnitPlatform()
 }
-
-tasks.register('runLocalDatabase') {
-    exec {
-        executable 'docker'
-        args 'run', '--name', 'mysql', '-e', 'MYSQL_ROOT_PASSWORD=root', '--network', 'host', '-d', 'mysql:latest'
-    }
-}
