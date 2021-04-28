@@ -41,7 +41,6 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  namespace: games
   name: games
   annotations:
     kubernetes.io/ingress.class: alb
