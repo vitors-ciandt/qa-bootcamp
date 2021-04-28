@@ -7,4 +7,4 @@ feign:
         loggerLevel: full
 
 deckProxy:
-  url: http://deck:8080
+  url: http://deck:80

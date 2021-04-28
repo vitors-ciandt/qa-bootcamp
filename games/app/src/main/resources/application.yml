@@ -7,7 +7,7 @@ feign:
         loggerLevel: full
 
 dealerProxy:
-  url: http://dealer:8080
+  url: http://dealer:80
 
 spring:
   jpa:
