@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: games
-        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_games:50c63f9c204d08695467add1e1376f96075fcd39
+        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_games:b6c09af3a7886f5dcbfc8aaf39b4ea3516de55f5
         ports:
         - containerPort: 8080
 ---
@@ -48,9 +48,9 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
-    - http:
-        paths:
-          - path: /*
-            backend:
-              serviceName: games
-              servicePort: 80
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: games
+          servicePort: 80
