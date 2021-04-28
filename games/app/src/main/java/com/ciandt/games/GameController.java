@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = {"*"})
+@CrossOrigin(origins = { "amazonaws.com", "localhost" })
 @RestController
 public class GameController {
     @Autowired
