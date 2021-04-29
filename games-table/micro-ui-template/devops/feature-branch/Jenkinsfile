@@ -1,0 +1,14 @@
+#!/usr/bin/env groovy
+@Library('devops-ihm-shared-lib@v3.9.9') _
+
+pipelineMicroUiFeatureBranchTemplate {
+  appName = "ihm-micro-ui-template"
+  artifactName = "ihm-micro-ui-template"
+  npmRegistry = "github"
+  slackChannel = "#amplify-alerts"
+  angularVersion = "8"
+  sonarQualityGateId = 47
+  sonarQualityProfileSCSS = "SonarQube Way-UP"
+  abortPreviousRunningBuilds = true
+  runSerialized = false
+}

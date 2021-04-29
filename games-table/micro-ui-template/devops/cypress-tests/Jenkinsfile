@@ -1,0 +1,26 @@
+#!/usr/bin/env groovy
+@Library('devops-ihm-shared-lib@v3.9.9') _
+def projectProperties = [
+    [$class: "BuildDiscarderProperty",strategy: [$class: "LogRotator", numToKeepStr: "5"]],
+    parameters([
+        choice(name: "CYPRESS_TEST_TYPE", choices: "component\nacceptance", description: "Cypress test type Component or Acceptance"),
+        string(name: "CYPRESS_BRANCH", defaultValue: "master", description: "Desired branch to run the tests"),
+        booleanParam(name: "RUN_PARALLEL_STAGE", defaultValue: true, description: "Deploying using parallel pipeline")
+    ])
+]
+
+properties(projectProperties)
+def cypressType = CYPRESS_TEST_TYPE
+def cypressBranch = CYPRESS_BRANCH
+def runParallelStage = RUN_PARALLEL_STAGE
+
+
+pipelineUiCypressTestTemplate {
+    appName = "ihm-micro-ui-template"
+    npmRegistry = "github"
+    cypressTestType = cypressType
+    cypressBranchName = cypressBranch
+    slackChannel = "#unified-proposal-test"
+    s3CredentialsPath = 's3://ihm-proposal-secrets-nonprod/tst/credentials-ui.json'
+    runParallel = runParallelStage
+}

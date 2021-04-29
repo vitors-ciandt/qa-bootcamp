@@ -1,0 +1,47 @@
+#!/usr/bin/env groovy
+@Library('devops-ihm-shared-lib@v4.0') _
+
+def projectProperties = [
+    [$class: "BuildDiscarderProperty",strategy: [$class: "LogRotator", numToKeepStr: "5"]],
+    parameters([
+            choice(name: "VERSION_INCREMENT", choices: "patch\nminor\nmajor", description: "Version to be incremented in artifact"),
+            string(name: "ANGULAR_VERSION", defaultValue: "8", description: "Angular Version"),
+            string(name: "SNOW_CHG_DESCRIPTION", description: "For any Production deployment, it is required that you include a short description of what you are deploying."),
+            booleanParam(name: "RUN_PARALLEL_STAGE", defaultValue: true, description: "Deploying using parallel pipeline")
+    ])
+]
+
+properties(projectProperties)
+
+def versionInc = VERSION_INCREMENT
+def angularVersion = ANGULAR_VERSION
+def snowChgDescription = SNOW_CHG_DESCRIPTION
+def runParallelStage = RUN_PARALLEL_STAGE
+
+
+pipelineMicroUiTemplate {
+    appName = "ihm-micro-ui-template"
+    demoPath = "micro-ui-demo"
+    npmRegistry = "github"
+    branch = branchName
+    environmentName = environmentStage
+    s3BucketPrefix = "modules-proposal"
+    newRelicBrowserApp = false
+    artifactName = "ihm-micro-ui-template"
+    s3dir = "proposal-digital-products-ui"
+    angularVersion = angularVersion
+    slackChannel = "#amplify-alerts"
+    versionIncrement = versionInc
+    versionInJira = true
+    snoworiginationgroup = "iHM-DEV Unified Proposal (SNC)"
+    snowaffectedci = "Unified Proposal"
+    snowServiceOffering = 'Unified Proposal SO'
+    snowdescription = snowChgDescription
+    jiraProjectKey = "VOGUE"
+    sonarQualityGateId = 47
+    sonarQualityProfileSCSS = "SonarQube Way-UP"
+    s3CredentialsPath = 's3://ihm-proposal-secrets-nonprod/tst/credentials-ui.json'
+    runParallel = runParallelStage
+    cypressJenkinsJob = "ihm-micro-ui-template/cypress-tests"
+    waitForCypressTests = true
+}

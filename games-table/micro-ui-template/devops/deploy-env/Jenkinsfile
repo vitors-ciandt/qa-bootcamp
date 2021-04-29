@@ -1,0 +1,29 @@
+@Library('devops-ihm-shared-lib@v3.9.9') _
+
+def projectProperties = [
+    [$class: "BuildDiscarderProperty",strategy: [$class: "LogRotator", numToKeepStr: "5"]],
+    parameters([
+            string(name: "BRANCH", defaultValue: "master", description: "Branch name to be built."),
+            choice(name: "ENVIRONMENT", choices: [''] + global.getPipelineEnvironmentsAsList(), description: "Environment name to deploy."),
+            string(name: "ANGULAR_VERSION", defaultValue: "6", description: "Angular Version"),
+            string(name: "SLACK_CHANNEL", defaultValue: "#amplify-alerts", description: "Slack Notification Channel")
+    ])
+]
+
+properties(projectProperties)
+
+def branchName = BRANCH
+def environmentStage = ENVIRONMENT
+def angular = ANGULAR_VERSION
+def slackChannelName = SLACK_CHANNEL
+
+pipelineMicroUiDeployEnvTemplate {
+    appName = "ihm-micro-ui-template"
+    npmRegistry = "github"
+    branch = branchName
+    environmentName = environmentStage
+    angularVersion = angular
+    s3BucketPrefix = "modules-proposal"
+    slackChannel = slackChannelName
+    newRelicBrowserApp = false
+}

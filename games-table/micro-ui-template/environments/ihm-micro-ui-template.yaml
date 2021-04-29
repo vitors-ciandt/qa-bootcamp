@@ -1,0 +1,32 @@
+all:
+  default:
+    app: ihm-micro-ui-template
+  envName: local
+  logLevel: OFF
+  featureToggle:
+    - name: 'isFeatureEnabled'
+      enabled: true
+      friendlyName: 'Enable feature description'
+      jiraCard: 'JIRA-1234'
+
+ci:
+  apiEndpoint: https://gateway-ci.x1-nonprod.iheartmedia.com
+  api:
+    api1Url: https://gateway-ci.x1-nonprod.iheartmedia.com/api1
+    api2Url: https://gateway-ci.x1-nonprod.iheartmedia.com/api2
+  oktaConfig:
+    issuer: https://iheart-test.okta.com/oauth2/OKTA_ID
+    redirectUri: http://localhost:4200/implicit/callback
+    clientId: OKTA_CLIENT_ID
+    scope: openid profile email offline_access
+
+stg:
+  apiEndpoint: https://gateway-stg.x1-nonprod.iheartmedia.com
+  api:
+    api1Url: https://gateway-stg.x1-nonprod.iheartmedia.com/api1
+    api2Url: https://gateway-stg.x1-nonprod.iheartmedia.com/api2
+  oktaConfig:
+    issuer: https://iheartmedia.oktapreview.com/oauth2/OKTA_ID
+    redirectUri: http://localhost:4200/implicit/callback
+    clientId: OKTA_CLIENT_ID
+    scope: openid profile email SF_Ext_Att

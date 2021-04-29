@@ -1,0 +1,13 @@
+<h1>Demo Playground</h1>
+<h2 *ngIf="isMicroUiLoaded">Micro UI Loaded</h2>
+
+<hr />
+
+<games-table *axLazyElement="microUiUrl"></games-table>
+
+<!-- <micro-ui-template
+  [attr.param-title]="'This is a title param passed from the main app'"
+  [attr.param-description]="'This is a description param passed from the main app'"
+  (onMicroUiLoaded)="onMicroUiLoaded($event.detail)"
+  *axLazyElement="microUiUrl"
+></micro-ui-template> -->
