@@ -1,0 +1,18 @@
+<h1>Card Player</h1>
+
+<div *ngIf="!!currentGame">
+  <div style="width: 100px; display: inline-block">
+    <app-playing-card [paramCard]="currentGame.card1"></app-playing-card>
+  </div>
+  <div style="width: 100px; display: inline-block">
+    <app-playing-card [paramCard]="currentGame.card2"></app-playing-card>
+  </div>
+</div>
+
+<hr />
+
+<button (click)="play()">Play Cards</button>
+<button (click)="playFromTheBottom()">Play From The Bottom</button>
+
+<hr />
+<games-table *axLazyElement="microUiUrl"></games-table>
