@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GameService {
-  private gamesApi = 'http://k8s-default-games-d9015bd95d-297394171.us-east-1.elb.amazonaws.com';
+  private gamesApi = 'https://37946zhd90.execute-api.us-east-1.amazonaws.com';
 
   constructor(private httpClient: HttpClient) {}
 
