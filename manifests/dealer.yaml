@@ -21,10 +21,10 @@ spec:
         app: dealer
     spec:
       containers:
-        - name: dealer
-          image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_dealer:50c63f9c204d08695467add1e1376f96075fcd39
-          ports:
-            - containerPort: 8080
+      - name: dealer
+        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_dealer:e7b6602a3346900ba8ea88302b752d91ad7a9363
+        ports:
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -34,9 +34,9 @@ spec:
   selector:
     app: dealer
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8080
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -48,9 +48,9 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
-    - http:
-        paths:
-          - path: /*
-            backend:
-              serviceName: dealer
-              servicePort: 80
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: dealer
+          servicePort: 80
