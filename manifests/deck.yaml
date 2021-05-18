@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: deck
   annotations:
-    fluxcd.io/automated: 'true'
+    fluxcd.io/automated: "true"
 spec:
   replicas: 3
   strategy:
@@ -21,10 +21,10 @@ spec:
         app: deck
     spec:
       containers:
-      - name: deck
-        image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_deck:2ded14f4246dd25d48c1ba874f293701866782f4
-        ports:
-        - containerPort: 8080
+        - name: deck
+          image: 833104194858.dkr.ecr.us-east-1.amazonaws.com/qa-bootcamp_deck:2ded14f4246dd25d48c1ba874f293701866782f4
+          ports:
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
@@ -34,6 +34,23 @@ spec:
   selector:
     app: deck
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: deck
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: deck
+              servicePort: 80

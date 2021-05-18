@@ -30,7 +30,6 @@ public class GameService {
 
     public Game playFromTheBottom() {
         val playedDeck = dealerService.getShuffled();
-        Collections.reverse(playedDeck);
         return repository.save(play(playedDeck));
     }
 
