@@ -42,7 +42,7 @@ public class GamesStep extends SpringIntegrationTest {
     @When("^I ask for all played games$")
     public void iAskForAllTheGames() {
         ResponseEntity<String> playResponse = restUtils.get("/games");
-        testContext.setResponse((playResponse))t;
+        testContext.setResponse((playResponse));
     }
 
     @When("^I play from the top$")
