@@ -33,6 +33,7 @@ public class Game {
     private PlayingCard card1;
     @Convert(converter = PlayingCardJpaConverterJson.class)
     private PlayingCard card2;
+    @Convert(converter = PlayingCardJpaConverterJson.class)
     @Column(columnDefinition = "text")
     @Convert(converter = PlayingCardListJpaConverterJson.class)
     private List<PlayingCard> playedDeck;
