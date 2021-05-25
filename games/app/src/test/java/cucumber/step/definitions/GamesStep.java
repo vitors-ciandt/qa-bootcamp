@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @AllArgsConstructor
@@ -41,7 +42,7 @@ public class GamesStep extends SpringIntegrationTest {
     @When("^I ask for all played games$")
     public void iAskForAllTheGames() {
         ResponseEntity<String> playResponse = restUtils.get("/games");
-        testContext.setResponse((playResponse));
+        testContext.setResponse((playResponse))t;
     }
 
     @When("^I play from the top$")
@@ -73,8 +74,6 @@ public class GamesStep extends SpringIntegrationTest {
     public void iGetAListOfAllPlayedGames() throws JsonProcessingException {
         ResponseEntity<String> response = testContext.getResponse();
 
-        PlayingCard topCard1 = new PlayingCard(1, CardSuit.CLUBS);
-        PlayingCard topCard2 = new PlayingCard(2, CardSuit.HEARTS);
         List<Game> gameList = objectMapper.readValue(response.getBody(), new TypeReference<List<Game>>() {
         });
         assertEquals(1, gameList.size());
@@ -99,8 +98,18 @@ public class GamesStep extends SpringIntegrationTest {
         ResponseEntity<String> response = testContext.getResponse();
         Game gameResponse = objectMapper.readValue(response.getBody(), Game.class);
 
-        gameRepository.findAll().stream().allMatch(gameCard -> gameCard.getId().equals(gameResponse.getId()));
-        gameRepository.findAll().stream().anyMatch(gameCard -> gameCard.equals(gameResponse.getCard1()));
-        gameRepository.findAll().stream().anyMatch(gameCard -> gameCard.equals(gameResponse.getCard2()));
+        assertTrue(gameRepository
+                .findAll()
+                .stream()
+                .anyMatch(game ->
+                        game.getCard1().equals(gameResponse.getCard1())
+                                && game.getId().equals(gameResponse.getId())));
+
+        assertTrue(gameRepository
+                .findAll()
+                .stream()
+                .anyMatch(game ->
+                        game.getCard2().equals(gameResponse.getCard2())
+                                && game.getId().equals(gameResponse.getId())));
     }
 }
