@@ -1,4 +1,3 @@
-
 package cucumber.step.definitions;
 
 import com.ciandt.dealer.playingcard.CardSuit;
@@ -26,8 +25,7 @@ public class DealerStep extends SpringIntegrationTest {
 
     @When("^Game requests a shuffled deck$")
     public void gameRequestsAShuffledDeck() {
-        ResponseEntity<String> playResponse = restUtils.get("/");
-        testContext.setResponse((playResponse));
+        testContext.setResponse(restUtils.get("/shuffled"));
     }
 
     @Then("^Game gets a shuffled deck$")

@@ -28,9 +28,9 @@ public class Hooks {
 
         WireMock
                 .stubFor(WireMock.get(WireMock.urlMatching("/"))
-                        .willReturn(aResponse()
-                                .withHeader("Content-type", MediaType.APPLICATION_JSON_VALUE)
-                                .withStatus(200)
-                                .withBody(notShuffledStringDeck)));
+                .willReturn(aResponse()
+                .withHeader("Content-type", MediaType.APPLICATION_JSON_VALUE)
+                .withStatus(200)
+                .withBody(notShuffledStringDeck)));
     }
 }

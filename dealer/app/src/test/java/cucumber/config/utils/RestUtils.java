@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("cucumber")
 public class RestUtils {
+
     @Autowired
     private TestRestTemplate restTemplate;
 
