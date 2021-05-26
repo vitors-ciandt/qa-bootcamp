@@ -1,6 +1,5 @@
 package cucumber.config;
 
-
 import com.ciandt.dealer.App;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cucumber.config.utils.RestUtils;
@@ -17,9 +16,10 @@ import org.springframework.test.context.ContextConfiguration;
 @AutoConfigureWireMock
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(classes = {
-        App.class, RestUtils.class,
+        App.class,
         TestContext.class,
-        WireMockConfig.class},
+        WireMockConfig.class,
+        RestUtils.class},
         initializers = ConfigDataApplicationContextInitializer.class)
 public class SpringIntegrationTest {
     @Autowired
