@@ -32,13 +32,31 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Use cucumber
+    testImplementation 'info.cukes:cucumber-java:1.2.5'
+    testImplementation 'info.cukes:cucumber-junit:1.2.5'
+    testImplementation 'info.cukes:cucumber-spring:1.2.5'
+    testImplementation 'net.masterthought:cucumber-reporting:3.14.0'
+    testCompileOnly "com.github.tomakehurst:wiremock-jre8:2.28.0"
+    testImplementation group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '3.0.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'com.ciandt.deck.App'
+    mainClass = 'com.ciandt.games.App'
 }
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    exclude '**/cucumber/**'
+}
+
+task cucumberTest(type: Test) {
+    testLogging {
+        showStandardStreams = true
+    }
 }
