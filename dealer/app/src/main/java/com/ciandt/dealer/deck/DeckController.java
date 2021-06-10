@@ -15,7 +15,8 @@ public class DeckController {
 
     @GetMapping("/")
     public List<PlayingCard> getDeck() {
-        return deckService.getDeck();
+        List<PlayingCard> returnFromService = deckService.getDeck();
+        return returnFromService;
     }
 
     @GetMapping("/shuffled")
